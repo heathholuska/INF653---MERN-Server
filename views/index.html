@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>US States Data API</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.6;
+                padding: 2rem;
+                max-width: 800px;
+                margin: auto;
+            }
+
+            code {
+                background: #eee;
+                padding: 0.2rem 0.4rem;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>US States Data REST API</h1>
+        <p>Welcome to the US States Data API. This service provides information about US states, including nicknames,
+            populations, and fun facts.</p>
+
+        <h2>API Endpoints</h2>
+        <ul>
+            <li><code>GET /states/</code> - Get all state data [cite: 66]</li>
+            <li><code>GET /states/:state</code> - Get data for a specific state code [cite: 66]</li>
+            <li><code>GET /states/:state/funfact</code> - Get a random fun fact [cite: 66]</li>
+        </ul>
+    </body>
+
+</html>
