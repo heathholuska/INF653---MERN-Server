@@ -1,6 +1,6 @@
 // config/corsoptions.js
 const allowedOrigins = [
-	"https://your-project-name.glitch.me", // Replace with your Glitch URL
+	"https://inf653-mern-server.onrender.com",
 	"http://127.0.0.1:5500",
 	"http://localhost:3500",
 ];
