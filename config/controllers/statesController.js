@@ -4,6 +4,7 @@ const data = {
 	states: require("../../model/statesData.json"),
 	setStates: function (data) {
 		this.states = data;
+		let statesList = [...data.states];
 	},
 };
 
@@ -18,14 +19,17 @@ const getAllStates = async (req, res) => {
 		);
 	} else if (contig === "false") {
 		statesList = data.states.filter(
-			(st) => st.code === "AK" && st.code === "HI",
+			(st) => st.code === "AK" || st.code === "HI",
 		);
 	}
 
 	const mongoStates = await State.find();
 	const mergedResults = statesList.map((state) => {
 		const mongoData = mongoStates.find((ms) => ms.stateCode === state.code);
-		return mongoData ? { ...state, funfacts: mongoData.funfacts } : state;
+		if (mongoData && mongoData.funfacts.length > 0) {
+            return { ...state, funfacts: mongoData.funfacts };
+        }
+        return state;
 	});
 
 	res.json(mergedResults);
@@ -40,9 +44,12 @@ const getState = async (req, res) => {
 
 	const mongoState = await State.findOne({ stateCode }).exec();
 
-	if (mongoState && mongoState.funfacts.length > 0) {
-		state.funfacts = mongoState.funfacts;
+	let result = { ...state };
+	if (mongoState) {
+		result.funfacts = mongoState.funfacts;
 	}
+	
+	
 	res.json(state);
 };
 
@@ -71,7 +78,7 @@ const getPopulation = (req, res) => {
 
 	if (!state)
 		return res.status(404).json({ message: "Invalid State Abbreviation" });
-	res.json({ state: state.state, population: state.population });
+	res.json({ state: state.state, population: state.population.toLocaleString("en-US") });
 };
 
 const getAdmission = (req, res) => {
