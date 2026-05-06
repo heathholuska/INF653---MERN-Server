@@ -40,7 +40,7 @@ const getState = async (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 
 	const mongoState = await State.findOne({ stateCode }).exec();
 
@@ -59,7 +59,7 @@ const getCapital = (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 
 	res.json({ state: state.state, capital: state.capital_city });
 };
@@ -69,7 +69,7 @@ const getNickname = (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 	res.json({ state: state.state, nickname: state.nickname });
 };
 const getPopulation = (req, res) => {
@@ -77,7 +77,7 @@ const getPopulation = (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 	res.json({ state: state.state, population: state.population.toLocaleString("en-US") });
 };
 
@@ -86,7 +86,7 @@ const getAdmission = (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 	res.json({ state: state.state, admitted: state.admission_date });
 };
 
@@ -95,7 +95,7 @@ const getRandomFunFact = async (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid state abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 
 	const mongoState = await State.findOne({ stateCode }).exec();
 
@@ -116,7 +116,7 @@ const addFunFacts = async (req, res) => {
 	const state = data.states.find((st) => st.code === stateCode);
 
 	if (!state)
-		return res.status(404).json({ message: "Invalid State Abbreviation" });
+		return res.status(404).json({ message: "Invalid state abbreviation parameter" });
 
 	const { funfacts } = req.body;
 
