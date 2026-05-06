@@ -50,7 +50,7 @@ const getState = async (req, res) => {
 	}
 	
 	
-	res.json(state);
+	res.json(result);
 };
 
 // GET Capital
