@@ -121,7 +121,7 @@ const addFunFacts = async (req, res) => {
 	const { funfacts } = req.body;
 
 	if (!funfacts)
-		return res.status(400).json({ message: "State Fun Facts Value Required" });
+		return res.status(400).json({ message: "State fun facts value required" });
 	if (!Array.isArray(funfacts))
 		return res
 			.status(400)
@@ -154,7 +154,7 @@ const updateFunFact = async (req, res) => {
 	if (!index)
 		return res
 			.status(400)
-			.json({ message: "State fun fact index value required" });
+			.json({ message: "State fun facts value required" });
 	if (!funfact)
 		return res.status(400).json({ message: "State fun fact value required" });
 
@@ -193,7 +193,7 @@ const deleteFunFact = async (req, res) => {
 	if (!index)
 		return res
 			.status(400)
-			.json({ message: "State fun fact index value required" });
+			.json({ message: "State fun facts value required" });
 
 	const mongoState = await State.findOne({ stateCode }).exec();
 
