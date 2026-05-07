@@ -13,25 +13,6 @@ A REST API built with Node.js, Express, and MongoDB that provides data and fun f
 * **Backend:** Node.js, Express.js  
 * **Database:** MongoDB (Mongoose)
 
-## **Local Setup**
-
-1. **Clone the repository:**  
-   git clone \<your-repo-url\>
-
-2. **Install dependencies:**  
-   npm install
-
-3. **Configure Environment:**  
-   Create a .env file in the root directory and add your database connection string:  
-   DATABASE\_URI=your\_mongodb\_connection\_string\_here  
-   PORT=3500
-
-4. **Start the server:**  
-   npm start
-
-## **API Endpoints Reference**
-
-*Note: The :state parameter is a 2-letter state abbreviation (e.g., KS, NY). It is case-insensitive.*
 
 ### **GET Requests**
 
@@ -43,8 +24,9 @@ A REST API built with Node.js, Express, and MongoDB that provides data and fun f
 * GET /states/:state/population \- Get state and population  
 * GET /states/:state/admission \- Get state and admission date
 
+
 ### **Data Modification (Requires JSON Body)**
 
 * POST /states/:state/funfact \- Add a new array of fun facts.  
-* PATCH /states/:state/funfact \- Update a fun fact (requires index and funfact properties).  
-* DELETE /states/:state/funfact \- Delete a fun fact (requires index property).
+* PATCH /states/:state/funfact \- Update a fun fact 
+* DELETE /states/:state/funfact \- Delete a fun fact
